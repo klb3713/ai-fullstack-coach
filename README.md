@@ -63,8 +63,8 @@ ai-fullstack-coach/
 
 - **OpenSpec 治理三件套**：`stage-openspec-init`、`stage-project-bootstrap`、`stage-change-workflow`（用户自建 `stage-openspec-skills`，repo-local）。本教练**用它们替换**通用 `openspec-*` 系列。硬依赖：OpenSpec 2.1.0 + Node.js ≥22.20.0。
 - **宿主 catalog skill**：`writing-for-agents`、`skill-creator`、`grilling` 可直接调用。
-- **前端设计 skill**：`frontend-design`、`@ctxr/skill-frontend-excellence`、daisyUI skill、DevLens / PageLens MCP（核实状态见 `skill-map.md`）。
-- **社区包名**：联网搜索首次执行时因额度不足未能核实具体社区包名，已核实的用真实名，未核实的在 `skill-map.md` / `backend-stack-map.md` 标「待联网核实」，不臆造。联网恢复后可补齐。
+- **前端设计 skill**：`frontend-design`、`theme-factory`、`brand-guidelines`、`web-design-guidelines`、`react-best-practices`、`vercel-composition-patterns`、`ui-ux-pro-max`、`@ctxr/skill-frontend-excellence`、daisyUI skill、DevLens / PageLens MCP（包名与安装命令见 `skill-map.md`）。
+- **社区包名**：已联网核实，前端官方套装（anthropics/skills、vercel-labs/agent-skills）与 Python/Go/Rust/Node.js 各一个以上是真实包名，附仓库 URL 与安装命令，见 `skill-map.md` / `backend-stack-map.md`。仅少数索引站条目（design-system、impeccable 等）仍标"待核实"，推荐时装前确认。
 
 ## 术语
 

@@ -1,6 +1,6 @@
 # 能力域 → 推荐 skills
 
-按判定结果推荐。**只推荐已核实的 skill 名**；标注「待联网核实」的社区包不要当确认项写入报告，而是作为"可搜索方向"提示用户自行核实（联网恢复后用 `npx skills add` 或对应渠道安装）。
+按判定结果推荐。**只推荐已核实的 skill 名**（下列官方套装与各栈单项均已核实并附仓库 URL）；个别标「待核实」的索引站条目不要当确认项写入报告，作为"可搜索方向"提示用户装前用 `npx skills list` / 搜索确认。安装统一用 `npx skills add <owner/repo>` 或包自带命令。
 
 ## 本地可隐式调用的 skill（来自宿主 catalog）
 
@@ -27,22 +27,40 @@
 - 安装：`stage-openspec-skills` 仓库的三个 skill 目录，复制到目标项目 `.claude/skills/`（或对应 skills 目录）。
 - 关键区分：change archive ≠ Stage exit，两道 gate 分开，`stage-change-workflow` 守这两道门。
 
-## 前端设计类（社区，核实状态见括号）
+## 官方套装（一次装一批，优先）
 
-| 能力域 | skill / 工具 | 核实状态 |
+两个官方仓库覆盖大部分前端设计能力，先装套装再按需补社区单项。安装后 `npx skills list` 确认实际 skill 名（不同版本前缀可能不同）。
+
+- **Anthropic 官方**：`npx skills add anthropics/skills` → `frontend-design`（anti-slop）、`theme-factory`（成套主题）、`brand-guidelines`（品牌色与排版）、`web-artifacts-builder`、`canvas-design`、`algorithmic-art`。来源：[anthropics/skills](https://github.com/anthropics/skills)。
+- **Vercel 官方**：`npx skills add vercel-labs/agent-skills` → `web-design-guidelines`（UI/无障碍审查，100+ 规则）、`react-best-practices`（React/Next.js 优化；部分来源称 skill 名为 `vercel-react-best-practices`，装后以 `npx skills list` 为准）、`vercel-composition-patterns`（React 组合模式，含 React 19 API）、`react-native-guidelines`、`vercel-deploy-claimable`。来源：[vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills)、[composition-patterns 说明](https://skillhub.360.com/skills/vercel-labs/agent-skills/vercel-composition-patterns)。
+
+## 前端设计类（社区单项，已核实包名与安装命令）
+
+| 能力域 | skill / 工具 | 安装命令 / 来源 |
 |---|---|---|
-| 3 | `frontend-design`（anthropics/skills 官方，anti-AI-slop，token 级设计计划） | 已核实：github.com/anthropics/skills，经 skills.sh 分发 |
-| 3 | `@ctxr/skill-frontend-excellence`（框架无关性能预算 + 19 阶段审计） | 已核实：npm 包，`npx @ctxr/kit@latest install @ctxr/skill-frontend-excellence` |
-| 3 | daisyUI frontend skill（短 class 约定，如 `btn btn-primary`） | 已核实：`npx -y skills add saadeghi/daisyui` |
-| 2 / 3 | ui-ux-pro-max、design-system、theme-factory、react-best-practices | 待联网核实：见 github.com/ezra-y/awesome-claude-ui-armory 索引，具体安装名先核实 |
-| 6 | DevLens MCP（持久 Chromium，写文件后 ~50ms 自动截图，dl_capture/dl_diff） | 已核实：npm 包 `devlens-mcp` |
-| 6 | PageLens（零配置视觉/控制台 diff） | 已核实：`npx pagelens http://localhost:3000` |
+| 3 | `frontend-design`（anti-AI-slop，token 级设计计划） | `npx skills add anthropics/skills` · [repo](https://github.com/anthropics/skills) |
+| 3 | `theme-factory`（成套主题，避免逐页定色） | 同上套装 · 官方 |
+| 3 | `brand-guidelines`（品牌规范落到输出） | 同上套装 · 官方 |
+| 3 | `web-design-guidelines`（UI/无障碍审查） | `npx skills add vercel-labs/agent-skills` · [repo](https://github.com/vercel-labs/agent-skills) |
+| 5 / 3 | `react-best-practices`（React/Next 优化规则） | 同上套装 · 名称以 `npx skills list` 为准 |
+| 3 | `vercel-composition-patterns`（避免布尔 prop 膨胀） | 同上套装 · [说明](https://baizhi.cloud/landing/skillhub/detail/vercel-labs/agent-skills/vercel-composition-patterns) |
+| 2 / 3 | `ui-ux-pro-max`（多风格/多栈设计系统，状态与无障碍规则） | `npx -y skills add nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max --agent claude-code` · [repo](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) |
+| 3 | `@ctxr/skill-frontend-excellence`（框架无关性能预算 + 19 阶段审计） | `npx @ctxr/kit@latest install @ctxr/skill-frontend-excellence` · [npm](https://www.npmjs.com/package/@ctxr/skill-frontend-excellence) |
+| 3 | daisyUI frontend skill（短 class 约定，如 `btn btn-primary`） | `npx -y skills add saadeghi/daisyui` · [源](https://github.com/saadeghi/daisyui) |
+| 6 | DevLens MCP（持久 Chromium，写文件后 ~50ms 自动截图，dl_capture/dl_diff） | npm 包 `devlens-mcp` · [npm](https://www.npmjs.com/package/devlens-mcp) |
+| 6 | PageLens（零配置视觉/控制台 diff） | `npx pagelens http://localhost:3000` |
 
-前端三分叉（框架 / 样式 / SSR）的具体差异处理见 `frontend-stack-map.md`。
+> 未核实项：索引站 `github.com/ezra-y/awesome-claude-ui-armory` 还列有 design-system、impeccable 等，具体安装名装前用 `npx skills list` / 搜索确认，不臆造。
+> 前端三分叉（框架 / 样式 / SSR）的具体差异处理见 `frontend-stack-map.md`。
 
-## 后端栈类
+## 后端栈类（已核实包名）
 
-Python / Go / Rust / Node.js 的检测信号、确定性检查命令、本地 skill 生成策略见 `backend-stack-map.md`。社区可装 skill 的具体包名**待联网核实**，不要臆造；默认策略是用 `skill-creator` 为项目生成技术栈本地 skill。
+检测信号、确定性检查命令见 `backend-stack-map.md`。社区可装 skill：
+
+- **通用多栈后端包**：`jeffallan/claude-skills`（Fullstack Dev Skills Plugin，覆盖多语言），`npx skills add jeffallan/claude-skills` · [repo](https://github.com/jeffallan/claude-skills)。
+- **Python / Go / Rust / Node.js 各自的已核实包名**见 `backend-stack-map.md`，逐个对应安装命令。
+
+推荐纪律：官方/知名仓库（anthropics、vercel-labs 等）可直接装；其余按 `skills-lock.json` 锁版本、按需安装。本地生成 skill（`skill-creator`）仍是与社区包并行的默认策略，用于固化项目独有约定。
 
 ## 易混淆项
 
