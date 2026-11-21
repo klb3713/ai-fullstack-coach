@@ -6,12 +6,12 @@
 
 这类 skill 在宿主环境中已存在、可被 agent 调用，可放心推荐：
 
-| 能力域 | skill | 用途 |
+| 能力域（层） | skill | 用途 |
 |---|---|---|
-| 0 | `writing-for-agents` | 写 / 改 `AGENTS.md`、`CLAUDE.md`、skill 时 |
-| 0 | `skill-creator` | 需要为某技术栈生成项目本地 skill 时 |
-| 1 / 2 | `grilling` | 拷问计划 / 需求 / 交互取舍，把模糊处逼出确定性 |
-| 7 | `stage-change-workflow` | change 归档、Stage exit gate、Fast Track lane |
+| 0（底座） | `writing-for-agents` | 写 / 改 `AGENTS.md`、`CLAUDE.md`、skill 时 |
+| 0（底座）/ 3（底座） | `skill-creator` | 需要为某技术栈或设计系统生成项目本地 skill 时 |
+| 1 / 2a / 2b（循环 / 底座） | `grilling` | 拷问产品定义、需求、全局骨架与交互取舍，把模糊处逼出确定性 |
+| 7（循环） | `stage-change-workflow` | change 归档、Stage exit gate、Fast Track lane |
 
 ## OpenSpec 治理层三件套（repo-local，来自用户自建 stage-openspec-skills）
 

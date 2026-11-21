@@ -1,12 +1,12 @@
 # 前端适配：能力域为主 + 三处分叉轻量适配
 
-前端**不按框架做完整切分**。工具链（TS + Vite + Vitest + ESLint）跨框架趋同，前端 AI 开发的瓶颈在设计层（域 2/3/6/7）而非工具链。因此：主体是 4 个框架无关的设计能力（下面「主体」），只在 3 个真正影响推荐的分叉点做轻量适配（下面「分叉」）。社区包名核实状态见 `skill-map.md`。
+前端**不按框架做完整切分**。工具链（TS + Vite + Vitest + ESLint）跨框架趋同，前端 AI 开发的瓶颈在设计层（域 2/3/6/7）而非工具链。因此：主体是 4 个框架无关的设计能力（域 2a/2b/3/6/7，下面「主体」），只在 3 个真正影响推荐的分叉点做轻量适配（下面「分叉」）。社区包名核实状态见 `skill-map.md`。
 
 ## 主体：4 个框架无关的设计能力
 
 | 能力域 | 推荐方向 | 来源 |
 |---|---|---|
-| 2 UX 结构 | 状态清单（empty/loading/error/success）、ASCII 线框、`grilling` 拷问交互取舍 | 宿主 catalog + 通用 |
+| 2a 全局 UX 骨架 / 2b 局部 UX | 状态清单（empty/loading/error/success）、ASCII 线框、`grilling` 拷问取舍 | 宿主 catalog + 通用 |
 | 3 UI 设计系统 | `frontend-design`（anti-slop + token 级设计计划）、性能预算 skill | 已核实 |
 | 6 验证闭环 | DevLens / PageLens 视觉反馈 MCP、Lighthouse 预算 | 已核实 |
 | 7 加固 | 组件测试（Testing Library 类）、E2E（Playwright） | 通用 |
